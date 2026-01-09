@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marken Referenz Sektion</title>
+    <!-- Tailwind CSS für schnelles Styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Weiche Übergänge für alle Logo-Container */
+        .logo-item {
+            transition: all 0.3s ease;
+        }
+        
+        /* Optional: Ein sanftes Schweben beim Hover */
+        .logo-item:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-white font-sans text-gray-800">
+
+    <!-- Beginn der Marken-Sektion -->
+    <section class="py-20 bg-gray-50 border-t border-gray-100">
+        <div class="container mx-auto px-4">
+            
+            <!-- Überschrift / Text -->
+            <div class="text-center max-w-4xl mx-auto mb-16">
+                <h2 class="text-xl md:text-2xl font-medium text-gray-700 leading-relaxed">
+                    "Wir setzen auf komplexe aber dafür hochwertige Tools, welche auch von folgenden Firmen benutzt werden..."
+                </h2>
+                <div class="h-1 w-24 bg-blue-600 mx-auto mt-6 rounded-full opacity-80"></div>
+            </div>
+
+            <!-- Logo Grid -->
+            <!-- 
+                Grid Einstellungen für 12 Logos:
+                grid-cols-2    = 2 Spalten auf dem Handy (6 Reihen)
+                md:grid-cols-4 = 4 Spalten auf Tablets (3 Reihen)
+                lg:grid-cols-6 = 6 Spalten auf Desktop (2 Reihen)
+            -->
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-12 items-center justify-items-center">
+
+                <!-- 1. Google -->
+                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
+                    <!-- class="h-8 md:h-10" sorgt für eine einheitliche Höhe -->
+                    <img src="google.svg" alt="Google" class="h-8 md:h-10 w-auto object-contain">
+                </div>
+
+                <!-- 2. Unilever -->
+                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
+                    <img src="unilever.svg" alt="Unilever" class="h-10 md:h-12 w-auto object-contain">
+                </div>
+
+                <!-- 3. Visa -->
+                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
+                    <img src="visa.svg" alt="Visa" class="h-6 md:h-8 w-auto object-contain">
+                </div>
+
+                <!-- 4. Porsche -->
+                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
+                    <img src="porsche.svg" alt="Porsche" class="h-10 md:h-12 w-auto object-contain">
+                </div>
+
+                <!-- 5. OpenAI -->
+                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
+                    <img src="openai.svg" alt="OpenAI" class="h-8 md:h-10 w-auto object-contain">
+                </div>
+
+                <!-- 6. NordVPN -->
+                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
+                    <img src="nordvpn.svg" alt="NordVPN" class="h-8 md:h-10 w-auto object-contain">
+                </div>
+
+                <!-- 7. Cloudflare -->
+                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
+                    <img src="cloudflare.svg" alt="Cloudflare" class="h-8 md:h-10 w-auto object-contain">
+                </div>
+
+                <!-- 8. NBC News -->
+                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
+                    <img src="nbcnews.svg" alt="NBC News" class="h-6 md:h-8 w-auto object-contain">
+                </div>
+
+                <!-- 9. The Guardian -->
+                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
+                    <img src="theguardian.svg" alt="The Guardian" class="h-6 md:h-8 w-auto object-contain">
+                </div>
+
+                <!-- 10. Michelin -->
+                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
+                    <img src="michelin.svg" alt="Michelin" class="h-10 md:h-12 w-auto object-contain">
+                </div>
+
+                <!-- 11. Proton -->
+                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
+                    <img src="proton.svg" alt="Proton" class="h-8 md:h-10 w-auto object-contain">
+                </div>
+
+                <!-- 12. Webflow -->
+                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
+                    <img src="webflow.svg" alt="Webflow" class="h-6 md:h-8 w-auto object-contain">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
