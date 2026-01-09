@@ -10,11 +10,45 @@
         /* Weiche Übergänge für alle Logo-Container */
         .logo-item {
             transition: all 0.3s ease;
+            position: relative; /* Wichtig für den Shimmer */
+            overflow: hidden;   /* Damit der Shimmer nicht aus der Box rausragt */
         }
         
-        /* Optional: Ein sanftes Schweben beim Hover */
         .logo-item:hover {
             transform: translateY(-2px);
+        }
+
+        /* DIE SHIMMER ANIMATION 
+           Ein weißer Lichtbalken, der von links nach rechts huscht.
+        */
+        @keyframes shine {
+            0% {
+                transform: translateX(-150%) skewX(-12deg);
+            }
+            100% {
+                transform: translateX(250%) skewX(-12deg);
+            }
+        }
+
+        /* Das Pseudo-Element, das den eigentlichen Lichteffekt erzeugt */
+        .shimmer-effect::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Ein fast unsichtbarer Verlauf, der in der Mitte weiß aufleuchtet */
+            background: linear-gradient(
+                to right, 
+                rgba(255,255,255,0) 0%, 
+                rgba(255,255,255,0.8) 50%, 
+                rgba(255,255,255,0) 100%
+            );
+            /* Startposition */
+            transform: translateX(-150%) skewX(-12deg);
+            /* Animation: Name, Dauer, Wiederholung */
+            animation: shine 3s infinite; 
         }
     </style>
 </head>
@@ -35,70 +69,75 @@
             <!-- Logo Grid -->
             <!-- 
                 Grid Einstellungen für 12 Logos:
-                grid-cols-2    = 2 Spalten auf dem Handy (6 Reihen)
-                md:grid-cols-4 = 4 Spalten auf Tablets (3 Reihen)
-                lg:grid-cols-6 = 6 Spalten auf Desktop (2 Reihen)
+                grid-cols-2    = 2 Spalten auf dem Handy
+                md:grid-cols-4 = 4 Spalten auf Tablets
+                lg:grid-cols-6 = 6 Spalten auf Desktop
             -->
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-8 gap-y-12 items-center justify-items-center">
 
-                <!-- 1. Google - Angepasst mit p-1 und Höhe, um Abschneiden zu verhindern -->
-                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
-                    <img src="images/google.svg" alt="Google" class="h-10 md:h-12 w-auto object-contain p-1">
+                <!-- 
+                   Wir nutzen 'style="animation-delay: X.Xs"' um den Wellen-Effekt zu erzeugen.
+                   Jedes Logo startet etwas später als das vorherige.
+                -->
+
+                <!-- 1. Google (Start) -->
+                <div class="logo-item shimmer-effect w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer" style="animation-delay: 0s;">
+                    <img src="images/google.svg" alt="Google" class="h-10 md:h-12 w-auto object-contain p-1 relative z-10">
                 </div>
 
-                <!-- 2. Unilever -->
-                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
-                    <img src="images/unilever.svg" alt="Unilever" class="h-10 md:h-12 w-auto object-contain">
+                <!-- 2. Unilever (+0.2s) -->
+                <div class="logo-item shimmer-effect w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer" style="animation-delay: 0.2s;">
+                    <img src="images/unilever.svg" alt="Unilever" class="h-10 md:h-12 w-auto object-contain relative z-10">
                 </div>
 
-                <!-- 3. Visa -->
-                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
-                    <img src="images/visa.svg" alt="Visa" class="h-6 md:h-8 w-auto object-contain">
+                <!-- 3. Visa (+0.4s) -->
+                <div class="logo-item shimmer-effect w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer" style="animation-delay: 0.4s;">
+                    <img src="images/visa.svg" alt="Visa" class="h-6 md:h-8 w-auto object-contain relative z-10">
                 </div>
 
-                <!-- 4. Porsche -->
-                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
-                    <img src="images/porsche.svg" alt="Porsche" class="h-10 md:h-12 w-auto object-contain">
+                <!-- 4. Porsche (+0.6s) -->
+                <div class="logo-item shimmer-effect w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer" style="animation-delay: 0.6s;">
+                    <img src="images/porsche.svg" alt="Porsche" class="h-10 md:h-12 w-auto object-contain relative z-10">
                 </div>
 
-                <!-- 5. OpenAI -->
-                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
-                    <img src="images/openai.svg" alt="OpenAI" class="h-8 md:h-10 w-auto object-contain">
+                <!-- 5. OpenAI (+0.8s) -->
+                <div class="logo-item shimmer-effect w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer" style="animation-delay: 0.8s;">
+                    <img src="images/openai.svg" alt="OpenAI" class="h-8 md:h-10 w-auto object-contain relative z-10">
                 </div>
 
-                <!-- 6. NordVPN -->
-                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
-                    <img src="images/nordvpn.svg" alt="NordVPN" class="h-8 md:h-10 w-auto object-contain">
+                <!-- 6. NordVPN (+1.0s) -->
+                <div class="logo-item shimmer-effect w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer" style="animation-delay: 1.0s;">
+                    <img src="images/nordvpn.svg" alt="NordVPN" class="h-8 md:h-10 w-auto object-contain relative z-10">
                 </div>
 
-                <!-- 7. Cloudflare -->
-                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
-                    <img src="images/cloudflare.svg" alt="Cloudflare" class="h-8 md:h-10 w-auto object-contain">
+                <!-- 7. Cloudflare (+1.2s) -->
+                <div class="logo-item shimmer-effect w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer" style="animation-delay: 1.2s;">
+                    <img src="images/cloudflare.svg" alt="Cloudflare" class="h-8 md:h-10 w-auto object-contain relative z-10">
                 </div>
 
-                <!-- 8. NBC News -->
-                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
-                    <img src="images/nbcnews.svg" alt="NBC News" class="h-6 md:h-8 w-auto object-contain">
+                <!-- 8. NBC News (+1.4s) -->
+                <div class="logo-item shimmer-effect w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer" style="animation-delay: 1.4s;">
+                    <img src="images/nbcnews.svg" alt="NBC News" class="h-6 md:h-8 w-auto object-contain relative z-10">
                 </div>
 
-                <!-- 9. The Guardian -->
-                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
-                    <img src="images/theguardian.svg" alt="The Guardian" class="h-6 md:h-8 w-auto object-contain">
+                <!-- 9. The Guardian (+1.6s) -->
+                <div class="logo-item shimmer-effect w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer" style="animation-delay: 1.6s;">
+                    <img src="images/theguardian.svg" alt="The Guardian" class="h-6 md:h-8 w-auto object-contain relative z-10">
                 </div>
 
-                <!-- 10. Michelin -->
-                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
-                    <img src="images/michelin.svg" alt="Michelin" class="h-10 md:h-12 w-auto object-contain">
+                <!-- 10. Michelin (+1.8s) -->
+                <div class="logo-item shimmer-effect w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer" style="animation-delay: 1.8s;">
+                    <img src="images/michelin.svg" alt="Michelin" class="h-10 md:h-12 w-auto object-contain relative z-10">
                 </div>
 
-                <!-- 11. Proton -->
-                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
-                    <img src="images/proton.svg" alt="Proton" class="h-8 md:h-10 w-auto object-contain">
+                <!-- 11. Proton (+2.0s) -->
+                <div class="logo-item shimmer-effect w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer" style="animation-delay: 2.0s;">
+                    <img src="images/proton.svg" alt="Proton" class="h-8 md:h-10 w-auto object-contain relative z-10">
                 </div>
 
-                <!-- 12. Webflow -->
-                <div class="logo-item w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer">
-                    <img src="images/webflow.svg" alt="Webflow" class="h-6 md:h-8 w-auto object-contain">
+                <!-- 12. Webflow (+2.2s) -->
+                <div class="logo-item shimmer-effect w-full flex justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 cursor-pointer" style="animation-delay: 2.2s;">
+                    <img src="images/webflow.svg" alt="Webflow" class="h-6 md:h-8 w-auto object-contain relative z-10">
                 </div>
 
             </div>
